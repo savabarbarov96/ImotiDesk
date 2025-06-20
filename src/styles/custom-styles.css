@@ -1,0 +1,168 @@
+/* Custom styles for Automation Aid application */
+
+/* Refined subtle pulsing animation for Automation Aid text */
+.automation-aid-text {
+  opacity: 1 !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  color: #ff3366;
+  display: inline-block;
+  position: relative;
+}
+
+/* Improved subtle pulsing animation keyframes for Automation Aid text */
+@keyframes automation-aid-pulse {
+  0% {
+    color: #ff3366;
+    transform: scale(1);
+  }
+  50% {
+    color: #ff5588;
+    transform: scale(1.03);
+    text-shadow: 0 0 3px rgba(255, 51, 102, 0.2);
+  }
+  100% {
+    color: #ff3366;
+    transform: scale(1);
+  }
+}
+
+/* Apply full opacity to all Automation Aid containers */
+.automation-aid-full-opacity,
+.automation-aid-full-opacity *,
+span:has(.automation-aid-text),
+span.automation-aid-text,
+div:has(.automation-aid-text),
+div.automation-aid-text,
+h1:has(.automation-aid-text),
+.text-shimmer-container:has(.automation-aid-text) {
+  opacity: 1 !important;
+}
+
+/* Ensure all parent elements have full opacity too */
+div:has(.automation-aid-text),
+span:has(.automation-aid-text),
+h1:has(.automation-aid-text) {
+  opacity: 1 !important;
+}
+
+/* Target any span containing Automation Aid */
+span:has(+ .automation-aid-full-opacity),
+span:has(> .automation-aid-full-opacity),
+span:contains("Automation Aid"),
+span:contains("Automation Aid") {
+  opacity: 1 !important;
+  font-weight: 900 !important;
+}
+
+/* Ensure Automation Aid text is visible in dark mode with subtle treatment */
+.dark .automation-aid-text {
+  color: #ff5588;
+  text-shadow: 0 0 2px rgba(255, 85, 136, 0.3);
+}
+
+/* Subtle hover effect */
+.automation-aid-text:hover {
+  animation: automation-aid-hover 2s infinite ease-in-out;
+}
+
+@keyframes automation-aid-hover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 2px rgba(255, 51, 102, 0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Direct styling for Automation Aid text */
+.font-black[style],
+.automation-aid-text[style] {
+  opacity: 1 !important;
+  font-weight: 900 !important;
+}
+
+/* MUI DateTimePicker Custom Styles */
+.MuiPickersPopper-root {
+  z-index: 9999 !important;
+}
+
+.MuiDateCalendar-root {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.MuiPickersDay-root {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.MuiPickersDay-root:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.MuiPickersDay-root.Mui-selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.MuiPickersDay-today {
+  border: 2px solid #3b82f6 !important;
+  background-color: transparent !important;
+}
+
+.MuiPickersDay-today.Mui-selected {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+.MuiTimeClock-root {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.MuiClockPointer-root {
+  background-color: #3b82f6 !important;
+}
+
+.MuiClockPointer-thumb {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+.MuiClock-pin {
+  background-color: #3b82f6 !important;
+}
+
+.MuiClockNumber-root {
+  color: #374151 !important;
+}
+
+.MuiClockNumber-root.Mui-selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Dark mode support for MUI DateTimePicker */
+.dark .MuiDateCalendar-root,
+.dark .MuiTimeClock-root {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark .MuiPickersDay-root {
+  color: #f9fafb !important;
+}
+
+.dark .MuiPickersDay-root:hover {
+  background-color: #374151 !important;
+}
+
+.dark .MuiClockNumber-root {
+  color: #f9fafb !important;
+} 

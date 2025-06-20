@@ -1,0 +1,5 @@
+
+project_id = "zanfdpuiblradrbtfzhl"
+
+[functions.send-sell-confirmation]
+verify_jwt = false

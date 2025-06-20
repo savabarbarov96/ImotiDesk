@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&subset=cyrillic,cyrillic-ext&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 9% 83%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Font family variables */
+    --font-sans: 'Montserrat', 'Play', sans-serif;
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 346 75% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold font-sans;
+  }
+
+  /* Page transition optimizations */
+  .page-transition-container {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent layout shifts during transitions */
+  [data-page-transition] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Smooth scrolling for page transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent scrolling during page transitions */
+  body.transitioning {
+    overflow: hidden;
+  }
+  
+  /* Ensure proper z-index stacking during transitions */
+  .animate-presence > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Optimize animations for better performance */
+  .motion-div {
+    transform: translateZ(0);
+    will-change: transform, opacity, filter;
+  }
+  
+  /* Optimize blur transitions */
+  [data-page-transition] {
+    filter: blur(0);
+    transform: translateZ(0);
+  }
+  
+  /* Ensure GPU acceleration for smooth blur effects */
+  .page-transition-blur {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+  }
+}
+
+@layer components {
+  /* Custom component styles */
+  .property-card-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .section-alt {
+    @apply bg-[#FCE7EC];
+  }
+
+  .glass-effect {
+    @apply bg-white/90 backdrop-blur-md border border-white/30 shadow-xl;
+  }
+
+  /* Hero sections */
+  .hero-section {
+    background: linear-gradient(135deg, #E42B57 0%, #C41945 100%);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Page section styles */
+  .page-section {
+    @apply py-12 md:py-16 lg:py-24;
+  }
+
+  .section-header {
+    @apply mb-12 text-center;
+  }
+
+  /* Form elements */
+  .form-container {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  /* New color gradients for sections */
+  .gradient-cool {
+    @apply bg-gradient-to-r from-red-50 to-pink-50;
+  }
+
+  .gradient-warm {
+    @apply bg-gradient-to-r from-orange-50 to-amber-50;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #fff0f3 0%, #ffe4e6 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  }
+
+  /* Page backgrounds */
+  .bg-properties {
+    background: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
+  }
+
+  .bg-services {
+    background: linear-gradient(90deg, #FCE7EC 0%, #F9D2DB 100%);
+  }
+
+  .bg-about {
+    background: linear-gradient(90deg, #f5f3ff 0%, #ede9fe 100%);
+  }
+
+  /* Shadow styles */
+  .shadow-elegant {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-floating {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Card styles */
+  .card-styled {
+    @apply bg-white rounded-xl shadow-elegant border border-gray-100 overflow-hidden transition-all;
+  }
+  
+  .card-styled:hover {
+    @apply shadow-floating;
+  }
+
+  /* Additional animations */
+  .animate-slow-fade {
+    animation: slow-fade 1s ease-out forwards;
+  }
+
+  /* Section dividers */
+  .wave-divider {
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+  }
+
+  .wave-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    z-index: 10;
+  }
+
+  /* Automation Aid Design System Components */
+
+  /* Gradient text headings */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#C41945] via-primary to-[#F0426A] bg-clip-text text-transparent;
+  }
+
+  .gradient-text-light {
+    @apply bg-gradient-to-r from-white via-[#FCE7EC] to-white bg-clip-text text-transparent;
+  }
+
+  .gradient-heading {
+    @apply bg-gradient-to-r from-[#C41945] via-primary to-[#F0426A] bg-clip-text text-transparent;
+  }
+
+  .gradient-heading-light {
+    @apply bg-gradient-to-r from-[#C41945] via-primary to-[#F0426A] bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism elements */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg rounded-xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-[#C41945]/80 backdrop-blur-md border border-[#E42B57]/30 text-white shadow-lg rounded-xl;
+  }
+
+  /* Buttons */
+  .btn-primary-gradient {
+    @apply bg-gradient-to-r from-[#E42B57] to-primary hover:from-[#C41945] hover:to-primary-dark transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-[#F0426A]/30 text-white;
+  }
+
+  .btn-secondary-gradient {
+    @apply bg-gradient-to-r from-secondary/90 to-secondary hover:from-secondary hover:to-secondary-dark transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-secondary-light/30 text-white;
+  }
+
+  /* Filters */
+  .filter-header {
+    @apply bg-gradient-to-r from-red-700 to-red-900 text-white rounded-t-lg p-4;
+  }
+
+  .filter-content {
+    @apply bg-gradient-to-b from-white to-red-50 p-5 rounded-b-lg border-red-100;
+  }
+
+  /* Section headers with decorative elements */
+  .decorated-header {
+    @apply relative inline-block pb-2 after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:w-1/2 after:h-1 after:bg-gradient-to-r after:from-red-500 after:to-primary after:rounded-full;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-fast {
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-slow {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes slow-fade {
+  0% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Add animation for InfiniteMovingCards component */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
