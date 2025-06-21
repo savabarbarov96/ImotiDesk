@@ -2,8 +2,14 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://frfplhezrpppfzfungwk.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyZnBsaGV6cnBwcGZ6ZnVuZ3drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3OTQwMzMsImV4cCI6MjA2MDM3MDAzM30.yG0_Hcd7LLlGrU7GNon_jyG9dumO1jkM-mh4SEJxdi0";
+// Get environment variables with fallbacks for development
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://frfplhezrpppfzfungwk.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyZnBsaGV6cnBwcGZ6ZnVuZ3drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3OTQwMzMsImV4cCI6MjA2MDM3MDAzM30.yG0_Hcd7LLlGrU7GNon_jyG9dumO1jkM-mh4SEJxdi0";
+
+// Validate environment variables
+if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+  throw new Error('Missing Supabase environment variables. Please check your .env file.');
+}
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
