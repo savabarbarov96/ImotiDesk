@@ -166,6 +166,7 @@ export const useCreateProperty = () => {
         city: property.city,
         address: property.address,
         property_type: property.property_type,
+        sub_district: property.sub_district,
       });
 
       // Validate property and listing types
@@ -213,12 +214,13 @@ export const useUpdateProperty = () => {
       
       // If any of the title-affecting fields are being updated, regenerate the title
       if ('bedrooms' in validatedProperty || 'city' in validatedProperty || 
-          'address' in validatedProperty || 'property_type' in validatedProperty) {
+          'address' in validatedProperty || 'property_type' in validatedProperty || 
+          'sub_district' in validatedProperty) {
         
         // Get current property data to fill in missing fields for title generation
         const { data: currentProperty, error: fetchError } = await supabase
           .from('imotidesk_properties')
-          .select('bedrooms, city, address, property_type')
+          .select('bedrooms, city, address, property_type, sub_district')
           .eq('id', id)
           .single();
         
@@ -232,6 +234,7 @@ export const useUpdateProperty = () => {
             city: validatedProperty.city ?? currentProperty.city,
             address: validatedProperty.address ?? currentProperty.address,
             property_type: validatedProperty.property_type ?? currentProperty.property_type,
+            sub_district: validatedProperty.sub_district ?? currentProperty.sub_district,
           };
           
           validatedProperty.title = generatePropertyTitle(titleData);

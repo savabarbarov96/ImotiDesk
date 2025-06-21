@@ -68,7 +68,7 @@ export const applyWatermark = async (
   const isTransparent = hasTransparentBackground(canvas, ctx);
   
   // Use white logo for transparent backgrounds, regular logo for others
-  const logoPath = isTransparent ? '/assets/trendimo-white.png' : watermarkPath;
+  const logoPath = isTransparent ? '/trendimo-white.png' : watermarkPath;
   
   // Increase size for white logo on transparent backgrounds
   const logoWidthPercentage = isTransparent ? 80 : widthPercentage;

@@ -336,7 +336,7 @@ const PropertyForm: React.FC<PropertyFormProps> = ({
             onUploadComplete={onImageUpload}
             maxFiles={5}
             className="mb-2"
-            watermarkPath="/assets/trendimo-white.png"
+            watermarkPath="/trendimo.png"
             watermarkOptions={{
               opacity: 0.4,
               widthPercentage: 60
